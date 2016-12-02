@@ -35,9 +35,9 @@ $manager->wait_all_children;
 sub run_spooled {
   my (@jobs) = splice @spool, 0, JOBS, ();
   my pid = $manager->start and return;
-  for my $file (@jobs) {
-      my ($line) = $file =~ s/g//;
-      if( any {$line} @master ) {
+  foreach my $file (@jobs) {
+#      my ($line) = $file =~ s/g//;
+      if( any {$_ eq $line} @master ) {
           next;
       }
       else {
