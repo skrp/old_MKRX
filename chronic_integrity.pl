@@ -1,5 +1,5 @@
 #!/usr/local/bin/perl
-# SCRUB CRONJOB
+# FIVE DOLLAR SCRUB CRONJOB
 # skrp Prince of Archives
 use strict;
 use warnings;
