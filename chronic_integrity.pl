@@ -4,33 +4,24 @@
 use strict;
 use warnings;
 use Digest::SHA ();
-use List::Util 'any';
+use File::Find::Rule;
 ###############################
 # USAGE
-my ( $input, $masterlist, $log) = @ARGV;
-open(my $sfh, '<', $input) or die("Can't open $input\n");
-open(my $mfh, '<', $masterlist) or die("Can't open $masterlist\n");
+my ( $dir, $log) = @ARGV;
 open(my $lfh, '>>', $log) or die("Can't open $log\n");
-################################
-# ARRAYS
-my @files = <$sfh>;
-my @master = readline $mfh;
-chomp @files;
 ###############################
 # BEGIN
-foreach my $file (@files) {
-      $true = file_digest($file) or die "couldn't sha $file";
-      if( any {$line} @master ) {
-          next;
+my $rule=File::Find::Rule->file()->start($dir);
+while (defined(my $file=$rule->match)) {
+      my $orgi = $file;
+      my $sha = file_digest($file) or die "couldn't sha $file";
+      if ($sha eq $orgi) {
+            next;
       }
       else {
-          print {$lfh} "$file: is not in $masterlist\n";
+            print {$lfh} "$file: ALERT FKN ENTROPY!\n";
       }
-close $mfh;
-close $sfh;
-close $lfh;
 }
-
 sub file_digest {
   my ($filename) = @_;
   my $digester = Digest::SHA->new('sha256');
