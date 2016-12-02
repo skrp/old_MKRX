@@ -4,7 +4,7 @@
 use strict;
 use warnings;
 use Parallel::ForkManager;
-use List::Utils 'any';
+use List::Util 'any';
 ###############################
 # USAGE
 my ( $input, $masterlist) = @ARGV;
