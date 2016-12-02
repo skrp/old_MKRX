@@ -3,7 +3,7 @@
 # skrp Prince of Archives
 use strict;
 use warnings;
-use Digest::SHA '256';
+use Digest::SHA ();
 use File::Find::Rule;
 ###############################
 # USAGE
