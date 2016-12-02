@@ -25,7 +25,7 @@ chomp @files;
 # BEGIN
 my @spool;
 foreach my $file (@files) {
-  push @spool, my $file;
+  push @spool, $file;
   run_spooled() if JOBS <= @spool;
 }
 run_spooled() if @spool;
@@ -36,12 +36,12 @@ sub run_spooled {
   my (@jobs) = splice @spool, 0, JOBS, ();
   my pid = $manager->start and return;
   for my $file (@jobs) {
-      $file =~ s/g//;
-      if( any {$file} @master ) {
+      my ($line) = $file =~ s/g//;
+      if( any {$line} @master ) {
           next;
       }
       else {
-          print "$file is not in $masterlist\n";
+          print {$lfh} "$file: is not in $masterlist\n";
       }
   }
   $manager->finish;
