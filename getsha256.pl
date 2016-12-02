@@ -11,7 +11,7 @@ use Parallel::ForkManager;
 my ($target, $shalog) = @ARGV;
 if (not defined $target) {die "usage: DIR TO SCAN ARGV[0] & shalog argv[1]"; }
 if (not defined $shalog) {die "usage: dir to scan argv[0] & SHALOG ARGV[1]"; }
-open my $lfh, '>>', $shalog or die "couldn't open shalog argv[1]";
+open(my $lfh, '>>', $shalog) or die "couldn't open shalog argv[1]";
 ###########################
 # JOBS
 use constant JOBS => 1000;
