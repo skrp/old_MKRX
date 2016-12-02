@@ -42,7 +42,8 @@ sub run_spooled {
 ########################
 # SHA FN
 sub file_digest {
-  my ($filename) = @_;
-  my $digester = Digest::SHA->new('sha256');
-  return $digester->hexdigest;
+    my ($filename) = @_;
+    my $digest = Digest::SHA->new(256);
+    $digest->addfile($filename, "b");
+    return $digest->hexdigest();
 }
