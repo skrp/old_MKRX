@@ -3,7 +3,7 @@
 # skrp Prince of Archives
 use strict;
 use warnings;
-use Digest::SHA ();
+use Digest::SHA '256';
 use File::Find::Rule;
 ###############################
 # USAGE
@@ -23,7 +23,8 @@ while (defined(my $file=$rule->match)) {
       }
 }
 sub file_digest {
-  my ($filename) = @_;
-  my $digester = Digest::SHA->new('sha256');
-  return $digester->hexdigest;
+    my ($filename) = @_;
+    my $digest = Digest::SHA->new(256);
+    $digest->addfile($filename, "b");
+    return $digest->hexdigest();
 }
