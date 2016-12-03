@@ -7,9 +7,10 @@ use Parallel::ForkManager;
 use List::Util 'any';
 ###############################
 # USAGE
-my ($input, $masterlist)=@ARGV;
+my ($input, $masterlist, $log)=@ARGV;
 open(my $sfh, '<', $input) or die("Can't open $input\n");
 open(my $mfh, '<', $masterlist) or die("Can't open $masterlist\n");
+open(my $lfh, '>>', $log) or die("Can't open $log\n");
 ################################
 # JOBS
 use constant MAX_PROC => 4;
@@ -38,7 +39,7 @@ sub run_spooled {
   my $pid=$manager->start and return;
   foreach my $file (@jobs) {
 #      my ($line) = $file =~ s/g//;
-      if(any {$_ eq $line} @master) {
+      if(any {$_ eq $file} @master) {
           next;
       }
       else {
@@ -48,4 +49,5 @@ sub run_spooled {
   $manager->finish;
 close $sfh;
 close $mfh;
+close $lfh;
 }
