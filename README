@@ -1,19 +1,23 @@
 Meri Kann cibR punX
 by skrp
+
 Keekai Gennkai
 of the village
 Hidden in the 1337
 
+###################
 Anarchist Archive
+###################
 
 ZFS over BSD
-Over 5 Million unique files
+Preserving more than 5.5 Million
+Unique files
 
 Files are split into blockss
-Named after its sha256sum
+Named after the sha256sum
 
 Standard Blocks 
-Allowfor associative-compression
+Allow for associative-compression
 
 Random Blocks
 Allow for dense obfuscation
