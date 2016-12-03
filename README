@@ -13,11 +13,11 @@ Named after the sha256sum
 
 ###################
 # MOTHERSHIP
-A) Standard Blocks 
+Standard Blocks 
 Allow for associative-compression
 ###################
 # OFFSPRING
-B) Random Blocks
+Random Blocks
 Allow for dense obfuscation
 
 All files are in one directory
