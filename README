@@ -1,6 +1,6 @@
-###################
+#################
 Anarchist Archive
-###################
+#################
 
 ZFS over BSD
 Preserving more than 5.5 Million
@@ -11,15 +11,6 @@ SICC Implementation:
 Files are split into blocks
 Named after the sha256sum
 
-###################
-# MOTHERSHIP
-Standard Blocks 
-Allow for associative-compression
-###################
-# OFFSPRING
-Random Blocks
-Allow for dense obfuscation
-
 All files in one directory
 All metadata in another directory
 
@@ -27,3 +18,13 @@ This isolation of metadata from data
 Allows for public gibberish
 To be private information
 Via SICC_QUI files
+
+#############
+# RAIDZ3 POOL
+Standard Blocks 
+Allow for associative-compression
+
+#################
+# EXTERNAL DRIVES
+Random Blocks
+Allow for dense obfuscation
