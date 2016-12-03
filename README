@@ -1,10 +1,3 @@
-Meri Kann cibR punX
-by skrp
-
-Keekai Gennkai
-of the village
-Hidden in the 1337
-
 ###################
 Anarchist Archive
 ###################
@@ -13,17 +6,23 @@ ZFS over BSD
 Preserving more than 5.5 Million
 Unique files
 
+SICC Implementation:
+
 Files are split into blocks
 Named after the sha256sum
 
-Standard Blocks 
+###################
+# MOTHERSHIP
+A) Standard Blocks 
 Allow for associative-compression
-
-Random Blocks
+###################
+# OFFSPRING
+B) Random Blocks
 Allow for dense obfuscation
 
 All files are in one directory
 All metadata are in another directory
 
-This allow for public gibberish
+This isolation of metadata from data
+Allows for public gibberish
 To be private information
