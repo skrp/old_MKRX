@@ -13,7 +13,7 @@ ZFS over BSD
 Preserving more than 5.5 Million
 Unique files
 
-Files are split into blockss
+Files are split into blocks
 Named after the sha256sum
 
 Standard Blocks 
