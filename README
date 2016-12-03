@@ -20,9 +20,10 @@ Allow for associative-compression
 Random Blocks
 Allow for dense obfuscation
 
-All files are in one directory
-All metadata are in another directory
+All files in one directory
+All metadata in another directory
 
 This isolation of metadata from data
 Allows for public gibberish
 To be private information
+Via SICC_QUI files
