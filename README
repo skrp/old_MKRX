@@ -1,17 +1,25 @@
 Meri Kann cibR punX
-1337 from the streets
+by skrp
+Keekai Gennkai
+of the village
+Hidden in the 1337
+
 Anarchist Archive
 
 ZFS over BSD
 Over 5 Million unique files
 
-Files are seperate from metadata
-Allowing for associative-compression
-Allowing for dense obfuscation
+Files are split into blockss
+Named after its sha256sum
 
+Standard Blocks 
+Allowfor associative-compression
 
-Each file is named after its sha256sum
+Random Blocks
+Allow for dense obfuscation
+
 All files are in one directory
+All metadata are in another directory
 
-Each file has a metadata file
-Seperate
+This allow for public gibberish
+To be private information
