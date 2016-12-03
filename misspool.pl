@@ -1,5 +1,5 @@
 #!/usr/local/bin/perl
-# LOG ALL FILES MISSING A CORESPONDING META FILE
+# VERIFY ALL FILES HAVE CORESPONDING META FILE
 # skrp Prince of Archives
 use strict;
 use warnings;
