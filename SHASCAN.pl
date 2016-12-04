@@ -31,13 +31,19 @@ $manager->wait_all_children;
 ###########################
 # ACTION FN
 sub run_spooled {
+# Write to a tmp file
+# name=date +$H_$M_$S;
+# if (ls $name) { exit(1); }
+#  open (my $tfm, '>>', path$name) or die;
   my (@jobs)=splice @spool, 0, JOBS, ();
   my $pid=$manager->start and return;
   for my $file (@jobs) {
     my ($sha) = file_digest($file) or die "couldn't sha $file";
     print {$lfh} "$sha $file\n";
-    }
-    $manager->finish;
+    # print {$tfh} "$sha $file\n";
+  }
+# cat /dump/* >> $lfh;
+  $manager->finish;
 }
 ########################
 # SHA FN
