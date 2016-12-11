@@ -29,16 +29,13 @@ while(defined(my $file = $rule->match)) {
 }
 run_spooled() if @spool;
 $manager->wait_all_children;
-while (my ($key, $value) = each %response) {
-  printf {$lfh} "$value: $key\n");
+foreach my $key (keys %response) {
+  my $value = $response{$key};
+  print $lfh "$value: $key\n";
 }
 ###########################
 # ACTION FN
 sub run_spooled {
-# Write to a tmp file
-# name=date +$H_$M_$S;
-# if (ls $name) { exit(1); }
-#  open (my $tfm, '>>', path$name) or die;
   my (@jobs)=splice @spool, 0, JOBS, ();
   my $pid=$manager->start and return;
   for my $file (@jobs) {
