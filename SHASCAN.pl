@@ -22,7 +22,7 @@ my $rule = File::Find::Rule->file()->start($target);
 my $manager = Parallel::ForkManager->new(MAX_PROC);
 $manager->set_waitpid_blocking_sleep(0);
 my @spool;
-my @response;
+my %response;
 while(defined(my $file = $rule->match)) {
   push @spool, $file;
   run_spooled() if JOBS <= @spool;
