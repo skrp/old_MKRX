@@ -22,12 +22,16 @@ my $rule = File::Find::Rule->file()->start($target);
 my $manager = Parallel::ForkManager->new(MAX_PROC);
 $manager->set_waitpid_blocking_sleep(0);
 my @spool;
+my @response;
 while(defined(my $file = $rule->match)) {
   push @spool, $file;
   run_spooled() if JOBS <= @spool;
 }
 run_spooled() if @spool;
 $manager->wait_all_children;
+while (my ($key, $value) = each %response) {
+  printf {$lfh} "$value: $key\n");
+}
 ###########################
 # ACTION FN
 sub run_spooled {
@@ -39,8 +43,7 @@ sub run_spooled {
   my $pid=$manager->start and return;
   for my $file (@jobs) {
     my ($sha) = file_digest($file) or die "couldn't sha $file";
-    print {$lfh} "$sha $file\n";
-    # print {$tfh} "$sha $file\n";
+    $response{$file} = $sha;
   }
 # cat /dump/* >> $lfh;
   $manager->finish;
