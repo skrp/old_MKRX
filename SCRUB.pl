@@ -13,14 +13,10 @@ open(my $lfh, '>>', $log) or die("Can't open $log\n");
 # BEGIN
 my $rule=File::Find::Rule->file()->start($dir);
 while (defined(my $file=$rule->match)) {
-      my $orgi=$file;
       my $sha=file_digest($file) or die "couldn't sha $file";
-      if ($sha eq $orgi) {
-            next;
-      }
-      else {
-            print {$lfh} "$file: ALERT FKN ENTROPY!\n";
-      }
+	$file =~ s/.*\///;
+      if ($sha eq $file) { next; }
+      else {  print {$lfh} "$file: ALERT FKN ENTROPY!\n"; }
 }
 sub file_digest {
     my ($filename)=@_;
