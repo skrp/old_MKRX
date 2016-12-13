@@ -1,6 +1,14 @@
 #################
 Anarchist Archive
 #################
+each file stored as its $sha
+metadata is stored as 'g'$sha
+
+SCRUB.pl - verifies the file to its sha
+INDEX.pl - checks if a file is uniq
+SHASCAN.pl - extract sha & file recursive
+
+#############
 
 ZFS over BSD
 Preserving more than 5.5 Million
