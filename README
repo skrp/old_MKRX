@@ -5,9 +5,9 @@ each file stored as its $sha
 metadata is stored as 'g'$sha
 
 SCRUB.pl - verifies the file to its sha
+CHKMETA.pl - confirms uniq file has metadata
 INDEX.pl - checks if a file is uniq
 SHASCAN.pl - extract sha & file recursive
-
 #############
 
 ZFS over BSD
