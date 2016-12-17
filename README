@@ -10,11 +10,8 @@ INDEX.pl - checks if a file is uniq
 SHASCAN.pl - extract sha & file recursive
 POP.pl - use list to populate dump
 HASH.pl - create hash files from meta
-
-METAHASH.pl - load metadata into hashes
-MKRX.pl - terminal interface
-QUE.pl - populate a list
-DECOMPRESS.pl - extract all archives
+MKRX.pl - terminal interface to meta-hashes
+QUE.pl - dump an array into a list
 #############
 
 ZFS over BSD
