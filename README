@@ -6,8 +6,8 @@ metadata is stored as 'g'$sha
 
 SCRUB.pl - verifies the file to its sha
 CHKMETA.pl - confirms uniq file has metadata
-INDEX.pl - checks if a file is uniq
-SHASCAN.pl - extract sha & file recursive
+UNIQ.pl - checks sha against archive
+SHA.pl - recursive sha extraction
 POP.pl - use list to populate dump
 HASH.pl - create hash files from meta
 MKRX.pl - terminal interface to meta-hashes
