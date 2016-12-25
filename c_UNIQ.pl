@@ -1,5 +1,5 @@
 #!/usr/local/bin/perl
-# INDEX - cmp sha against uniq list
+# UNIQ - cmp sha against uniq list
 # by skrp of MKRX
 use strict;
 use warnings;
