@@ -14,7 +14,7 @@ then
 fi
 #
 # ARGUMENTS
-key=${1%/}
+QUI=${1%/}
 dump=${2%/}
 #
 # LOCATIONS
@@ -22,15 +22,15 @@ dump=${2%/}
 # $dump/ = working directory
 # $dump/pool/ = final location 
 # $dump/limbo/ = temporary location for split
-# $dump/keys/ = ordered file pieces
+# $dump/QUI/ = ordered file pieces
 # $dump/output/ = recompiled files
 #
 # BEGIN
-list=$( cat $key );
+whole=$( cat $QUI );
 
-for line in $list
+for part in $whole
 do
-    cat "$dump"/pool/"$line" >> "$dump"/limbo/completed;
+    cat "$dump"/pool/"$part" >> "$dump"/limbo/completed;
 done
 wsha=$( sha256 /"$dump"/limbo/completed | awk '{ print $NF }' )
 mv "$dump"/limbo/completed "$dump"/output/"$wsha";
