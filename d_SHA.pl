@@ -1,5 +1,5 @@
 #!/usr/local/bin/perl
-# SHASCAN - cmp sha to uniq list
+# SHA - cmp sha to uniq list
 # by skrp of MKRX
 ##################################
 use strict;
