@@ -28,4 +28,5 @@ while (defined(my $file = $rule->match)) {
 	print $enc "$tmp[3]\n";	
 	close $ifh;
 }
+close $nam; close $pat; close $siz; close $enc;
 print "INDEX POPULATED\n";
