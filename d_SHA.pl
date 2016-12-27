@@ -1,5 +1,5 @@
 #!/usr/local/bin/perl
-# SHA - cmp sha to uniq list
+# SHA - extract sha recursively
 # by skrp of MKRX
 ##################################
 use strict;
