@@ -24,8 +24,8 @@ fi
 target=${1%/}
 dump=${2%/}
 
-[[ -d "target" ]] || echo "INVALID SPLIT DIR"; exit 1; 
-[[ -d "dump" ]] || echo "INVALID DUMP DIR"; exit 1; 
+[[ -d "$target" ]] || echo "INVALID SPLIT DIR"; exit 1; 
+[[ -d "$dump" ]] || echo "INVALID DUMP DIR"; exit 1; 
 
 for line in $target/*
 do
