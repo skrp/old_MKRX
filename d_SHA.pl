@@ -2,8 +2,7 @@
 # SHA - extract sha recursively
 # by skrp of MKRX
 ##################################
-use strict;
-use warnings;
+use strict; use warnings;
 use File::Find::Rule;
 use Digest::SHA ();
 ##########################
@@ -18,11 +17,10 @@ my $rule = File::Find::Rule->file()->start($target);
 my %response;
 while(defined(my $file = $rule->match)) {
     my ($sha) = file_digest($file) or die "couldn't sha $file";
-	$response{$file} = $sha;	
+    $response{$file} = $sha;	
 }
-while (my ($key, $value) = each %response) {
-	print $lfh "$value:  $key\n";
-}
+while (my ($key, $value) = each %response) 
+	{ print $lfh "$value:  $key\n"; }
 ########################
 # SHA FN
 sub file_digest {
