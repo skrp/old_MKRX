@@ -24,7 +24,7 @@ while (1) {
     if ($cmd eq 'reset')
         { @newkeyset = @masterkeyset; }
     elsif ($cmd eq 'print') {
-        open(my $keyfile, '>>', $key_path) or die "couldn't wipe preivous";
+        open(my $keyfile, '>', $key_path) or die "couldn't wipe preivous";
         print $keyfile ""; close $keyfile;
         open(my $keyfile, '>>', $key_path) or die "couldn't open latest";
         foreach my $key (@newkeyset)
