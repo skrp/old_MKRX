@@ -1,5 +1,5 @@
 #!/usr/local/bin/perl
-# FILT - grep metadata interface
+# FILT - grep metadata interface DAEMONIZE
 #   feat. ningu irc.freenode.net
 use strict; use warnings;
 my %map;
@@ -58,9 +58,9 @@ while (1) {
         open(my $outst, '>>', $oustand_path) or die "couldn't open oustand";
         my $current_size = 0; my @popletfkeys = @newkeyset;
         foreach my $key (@newkeyset) {
-            while ( $current_size < $target_size ) {
                 my $itr_amt = values %{$p_hash->{$key}}; 
                 $current_file += $itr_amt;
+            while ( $current_size < $target_size ) {
                 splice (@popleftkeys, $key); #remove $key from outstanding list
                 print $pop "$key\n";
             }
