@@ -1,8 +1,7 @@
 #!/usr/local/bin/perl
-# FIVE DOLLAR SCRUB CRONJOB
+# $5 SCRUB CRONJOB
 # skrp Prince of Archives
-use strict;
-use warnings;
+use strict; use warnings;
 use Digest::SHA ();
 use File::Find::Rule;
 ###############################
