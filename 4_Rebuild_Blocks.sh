@@ -1,9 +1,7 @@
 #!/usr/local/bin/bash
-# 
-################
-# Compile Files
-################
-#
+######################################
+# Compile - rebuild file from QUI file
+######################################
 # USAGE
 if (( $# !=2 ))
 then 
