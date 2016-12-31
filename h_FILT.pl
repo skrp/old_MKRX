@@ -39,8 +39,11 @@ while (1) {
     }
     elsif ($cmd eq 'value'){
         my @printed;
-        foreach (@newkeyset) 
-            { @printed = grep { $map{$_} }} # values of hash pushed to array        
+        my $v_hash = $map{$string};
+        foreach (@newkeyset)
+            { @printed = values $v_hash{$_}; }
+        foreach my $val (@printed)
+            { print "$val\n"; }
         foreach (@printed)
             { print "$_\n"; }
     }
