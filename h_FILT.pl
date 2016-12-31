@@ -14,7 +14,7 @@ foreach my $cmd (@commands)
     { read_file(uc substr($cmd, 0, 3), $cmd); }
 my @masterkeyset = keys %{$map{$commands[0]}};
 my @newkeyset = @masterkeyset;
-# USER INPUT
+# USER INPUT ###################################
 while (1) {
     print "usage: type string; reset; print;\n";
     print "MKRX SYSTEMS RDY: ";
@@ -32,7 +32,7 @@ while (1) {
         { layer_s($cmd, $string); }
     else
         { print "unknown command $cmd\n"; }
-} ################################################
+} #############################################
 sub read_file {
     my ($filename, $cmd) = @_;
     my $path = "$data_dir/$filename";
