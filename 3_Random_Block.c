@@ -1,6 +1,9 @@
 /*	
- * slicr
- *
+ * #######################################
+ * slicr - shred a file into random parts
+ * Store the part-listing as a qui file
+ * - - - - - - - -feat Mikhail Usvyatsov
+ *#######################################
  * Shred a file into random parts
  * Store the part-listing as a qui file
  *
