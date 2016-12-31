@@ -1,9 +1,9 @@
 #!/usr/local/bin/perl
 # HASH - populate hash files via metadata
 # by skrp of MKRX
-use strict;
-use warnings;
+use strict; use warnings;
 use File::Find::Rule;
+
 my ($target) = @ARGV;
 my $rule = File::Find::Rule->file()->start($target);
 # CREATE HASH-FILES
