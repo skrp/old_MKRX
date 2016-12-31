@@ -4,9 +4,6 @@
  * Store the part-listing as a qui file
  * - - - - - - - -feat Mikhail Usvyatsov
  *#######################################
- * Shred a file into random parts
- * Store the part-listing as a qui file
- *
  * ARG2 - FILE
  * ARG3 - DUMP DIR
  * ARG4 - QUI DIR
