@@ -41,7 +41,7 @@ while (1) {
         my @printed;
         my $v_hash = $map{$string};
         foreach (@newkeyset)
-            { @printed = values $v_hash{$_}; }
+            { @printed = values %{$v_hash->{$_}}; }
         foreach (@printed)
             { print "$_\n"; }
     }
