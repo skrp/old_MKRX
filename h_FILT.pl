@@ -7,7 +7,6 @@ my @commands = qw(name path size encode);
 die "no source directory" unless @ARGV;
 my ($data_dir) = @ARGV;
 die "no dir $data_dir" unless -d $data_dir;
-my $key_path = "$data_dir/latest";
 # POPULATE HASHES
 foreach my $cmd (@commands)
     { read_file(uc substr($cmd, 0, 3), $cmd); }
@@ -24,6 +23,7 @@ while (1) {
     if ($cmd eq 'reset')
         { @newkeyset = @masterkeyset; }
     elsif ($cmd eq 'print') {
+        my $key_path = "$data_dir/latest";
         open(my $keyfile, '>', $key_path) or die "couldn't wipe preivous";
         print $keyfile ""; close $keyfile;
         open(my $keyfile, '>>', $key_path) or die "couldn't open latest";
@@ -37,13 +37,32 @@ while (1) {
             { $amnt++; }
         print "$amnt\n";
     }
-    elsif ($cmd eq 'value'){
+    elsif ($cmd eq 'value') {
         my @printed;
         my $v_hash = $map{$string};
         foreach (@newkeyset)
             { @printed = values %{$v_hash->{$_}}; }
         foreach (@printed)
             { print "$_\n"; }
+    }
+    elsif ($cmd eq 'pop') {
+        my $target_size = $string;
+        my $p_hash = $map{'size'};
+        my $pop_path = "$data_dir/pop";
+        my $oustand_path = "$data_dir/outstand";
+        open(my $pop, '>', $pop_path) or die "couldn't wipe previous";
+        open(my $pop, '>', $pop_path) or die "couldn't wipe previous";
+        print $pop ""; close $pop;
+        open(my $keyfile, '>>', $key_path) or die "couldn't open latest";
+        my $current_size = 0; my @popletfkeys = @newkeyset;
+        foreach my $key (@newkeyset) {
+            while ( $current_size < $target_size ) {
+                my $itr_amt = values %{$p_hash->{$key}}; 
+                $current_file += $itr_amt;
+                splice (@popleftkeys, $key); #remove $key from outstanding list    
+            }
+        
+        }
     }
     elsif ($map{$cmd})
         { layer_s($cmd, $string); }
