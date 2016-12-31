@@ -18,7 +18,7 @@ open(my $efd, '>>', $eefd);
 # POPULATE HASH-FILES
 while (defined(my $file = $rule->match)) {
 	open(my $fd, '<', $file); 
-	my	@f = readline $fd;
+	my @f = readline $fd;
 	chomp @f;
 	my $fsha = $file =~ s%.*\/%%r;
 	print $nfd "$fsha $f[0]\n";
