@@ -6,11 +6,7 @@ use warnings;
 use File::Find::Rule;
 my ($target) = @ARGV;
 my $rule = File::Find::Rule->file()->start($target);
-my @sha;
-my @name;
-my @path;
-my @size; 
-my @encode;
+# CREATE HASH-FILES
 my $nnfd = 'NAM';
 my $ppfd = 'PAT';
 my $zzfd = 'SIZ';
@@ -19,6 +15,7 @@ open(my $nfd, '>>', $nnfd);
 open(my $pfd, '>>', $ppfd);
 open(my $zfd, '>>', $zzfd);
 open(my $efd, '>>', $eefd);
+# POPULATE HASH-FILES
 while (defined(my $file = $rule->match)) {
 	open(my $fd, '<', $file); 
 	my	@f = readline $fd;
