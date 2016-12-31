@@ -1,7 +1,7 @@
 #!/usr/local/bin/perl
-use strict;
-use warnings;
-
+use strict;use warnings;
+# Xtract & Standardize - rip recursive standardization
+# - - - - - - - -  feat. https://github.com/kentfredric
 use File::Find::Rule;
 use Digest::SHA ();
 use Parallel::ForkManager;
