@@ -1,4 +1,6 @@
 use strict; use warnings;
+# FILT - grep metadata interface
+#   feat. ningu irc.freenode.net
 my %map;
 my @commands = qw(name path size encode);
 die "no source directory" unless @ARGV;
