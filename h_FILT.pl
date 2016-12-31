@@ -8,7 +8,6 @@ die "no source directory" unless @ARGV;
 my ($data_dir) = @ARGV;
 die "no dir $data_dir" unless -d $data_dir;
 my $key_path = "$data_dir/latest";
-open(my $keyfile, '>>', $key_path) or die "couldn't open latest";
 # POPULATE HASHES
 foreach my $cmd (@commands)
     { read_file(uc substr($cmd, 0, 3), $cmd); }
@@ -25,8 +24,25 @@ while (1) {
     if ($cmd eq 'reset')
         { @newkeyset = @masterkeyset; }
     elsif ($cmd eq 'print') {
+        open(my $keyfile, '>>', $key_path) or die "couldn't wipe preivous";
+        print $keyfile ""; close $keyfile;
+        open(my $keyfile, '>>', $key_path) or die "couldn't open latest";
         foreach my $key (@newkeyset)
             { print $keyfile "$key\n"; }
+        close %keyfile;
+    }
+    elsif ($cmd eq 'count') {
+        my $amnt = 0;
+        foreach (@newkeyset)
+            { $amnt++; }
+        print "$amnt\n";
+    }
+    elsif ($cmd eq 'value'){
+        my @printed;
+        foreach (@newkeyset) 
+            { @printed = grep { $map{$_} }} # values of hash pushed to array        
+        foreach (@printed)
+            { print "$_\n"; }
     }
     elsif ($map{$cmd})
         { layer_s($cmd, $string); }
