@@ -1,9 +1,7 @@
 #!/usr/local/bin/bash
-#
-###################
-# Shred Into Blocks
-###################
-#
+#################################
+# STDBLK - split file into blocks
+#################################
 # LOCATIONS
 # $target/ = files will be shredded into 1M blocks
 # $dump/ = working directory
