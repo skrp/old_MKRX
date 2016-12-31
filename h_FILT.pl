@@ -1,6 +1,7 @@
-use strict; use warnings;
+#!/usr/local/bin/perl
 # FILT - grep metadata interface
 #   feat. ningu irc.freenode.net
+use strict; use warnings;
 my %map;
 my @commands = qw(name path size encode);
 die "no source directory" unless @ARGV;
