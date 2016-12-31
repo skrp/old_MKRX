@@ -49,11 +49,13 @@ while (1) {
         my $target_size = $string;
         my $p_hash = $map{'size'};
         my $pop_path = "$data_dir/pop";
-        my $oustand_path = "$data_dir/outstand";
-        open(my $pop, '>', $pop_path) or die "couldn't wipe previous";
-        open(my $pop, '>', $pop_path) or die "couldn't wipe previous";
+        my $outstand_path = "$data_dir/outstand";
+        open(my $pop, '>', $pop_path) or die "couldn't wipe pop";
+        open(my $outst, '>', $outstand_path) or die "couldn't wipe oustand";
         print $pop ""; close $pop;
-        open(my $keyfile, '>>', $key_path) or die "couldn't open latest";
+        print $outst ""; close $outst;
+        open(my $pop, '>>', $pop_path) or die "couldn't open pop";
+        open(my $outst, '>>', $oustand_path) or die "couldn't open oustand";
         my $current_size = 0; my @popletfkeys = @newkeyset;
         foreach my $key (@newkeyset) {
             while ( $current_size < $target_size ) {
@@ -61,8 +63,9 @@ while (1) {
                 $current_file += $itr_amt;
                 splice (@popleftkeys, $key); #remove $key from outstanding list    
             }
-        
         }
+        foreach (@popleftkeys)
+            { print $outst "$_\n"; }
     }
     elsif ($map{$cmd})
         { layer_s($cmd, $string); }
