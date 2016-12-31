@@ -41,8 +41,8 @@ while (1) {
         my @printed;
         my $v_hash = $map{$string};
         foreach (@newkeyset)
-            { @printed = values %{$v_hash->{$_}}; }
-        foreach (@printed)
+            { @value_l = values %{$v_hash->{$_}}; }
+        foreach (@value_l)
             { print "$_\n"; }
     }
     elsif ($cmd eq 'pop') {
@@ -61,7 +61,8 @@ while (1) {
             while ( $current_size < $target_size ) {
                 my $itr_amt = values %{$p_hash->{$key}}; 
                 $current_file += $itr_amt;
-                splice (@popleftkeys, $key); #remove $key from outstanding list    
+                splice (@popleftkeys, $key); #remove $key from outstanding list
+                print $pop "$key\n";
             }
         }
         foreach (@popleftkeys)
