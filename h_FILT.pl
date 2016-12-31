@@ -93,4 +93,11 @@ sub layer_s {
     foreach my $key (@newkeyset)
         { print "$key\n"; }
 }
-
+sub temp_file {
+    my $file_name = @_;
+    my $f_path = "$data_dir/$file_name";
+    open(my $i_fh, '>', $f_path) or die "Couldn't open $filename\n";
+    print $i_fh ""; close $i_fh;
+    open(my $i_fh, '>>', $f_path) or die "couldn't open oustand";
+    return $i_fh;
+}
