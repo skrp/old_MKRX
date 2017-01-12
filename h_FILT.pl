@@ -1,78 +1,74 @@
 #!/usr/local/bin/perl
+use strict; use warnings;
 # FILT - grep metadata interface DAEMONIZE
 #   feat. ningu irc.freenode.net
-use strict; use warnings;
-my %map;
+
+# ARGS & FRIENDS #####################################
+my %master;
 my @commands = qw(name path size encode);
 die "no source directory" unless @ARGV;
 my ($data_dir) = @ARGV;
 die "no dir $data_dir" unless -d $data_dir;
-# POPULATE HASHES
-foreach my $cmd (@commands)
-    { read_file(uc substr($cmd, 0, 3), $cmd); }
-my @masterkeyset = keys %{$map{$commands[0]}};
-my @newkeyset = @masterkeyset;
-# USER INPUT ###################################
+# POPULATE HASHES ####################################
+foreach my $comm (@commands)
+    { read_file(uc substr($comm, 0, 3), $comm); }
+my @masterkeyset = keys %{$master{$commands[0]}};
+my @keyset = @masterkeyset;
+# PROMPT #############################################
 while (1) {
-    print "usage: type string; reset; print;\n";
-    print "MKRX SYSTEMS RDY: ";
+	prmpt();
     my $input = <STDIN>; chomp $input;
     print "\nwork'n on $input\n";
-    my ($cmd, $string) = split(' ', $input, 2);
- 
-    if ($cmd eq 'reset')
-        { @newkeyset = @masterkeyset; }
-    elsif ($cmd eq 'print') {
-        my $key_path = "$data_dir/latest";
-        open(my $keyfile, '>', $key_path) or die "couldn't wipe preivous";
-        print $keyfile ""; close $keyfile;
-        open(my $keyfile, '>>', $key_path) or die "couldn't open latest";
-        foreach my $key (@newkeyset)
-            { print $keyfile "$key\n"; }
-        close %keyfile;
+    my ($comm, $string) = split(' ', $input, 2);
+# RESET ##############################################
+    if ($comm eq 'reset')
+        { @keyset = @masterkeyset; }
+# PRINT ##############################################
+    elsif ($comm eq 'print') {
+		my $pfh = crfile($string);
+        foreach my $key (@keyset)
+            { print $pfh "$key\n"; }
+        close $pfh;
     }
-    elsif ($cmd eq 'count') {
-        my $amnt = 0;
-        foreach (@newkeyset)
-            { $amnt++; }
-        print "$amnt\n";
-    }
-    elsif ($cmd eq 'value') {
-        my @printed;
-        my $v_hash = $map{$string};
-        foreach (@newkeyset)
-            { @value_l = values %{$v_hash->{$_}}; }
-        foreach (@value_l)
-            { print "$_\n"; }
-    }
-    elsif ($cmd eq 'pop') {
-        my $target_size = $string;
-        my $p_hash = $map{'size'};
-        my $pop_path = "$data_dir/pop";
-        my $outstand_path = "$data_dir/outstand";
-        open(my $pop, '>', $pop_path) or die "couldn't wipe pop";
-        open(my $outst, '>', $outstand_path) or die "couldn't wipe oustand";
-        print $pop ""; close $pop;
-        print $outst ""; close $outst;
-        open(my $pop, '>>', $pop_path) or die "couldn't open pop";
-        open(my $outst, '>>', $oustand_path) or die "couldn't open oustand";
-        my $current_size = 0; my @popletfkeys = @newkeyset;
-        foreach my $key (@newkeyset) {
-                my $itr_amt = values %{$p_hash->{$key}}; 
-                $current_file += $itr_amt;
-            while ( $current_size < $target_size ) {
-                splice (@popleftkeys, $key); #remove $key from outstanding list
-                print $pop "$key\n";
-            }
-        }
-        foreach (@popleftkeys)
-            { print $outst "$_\n"; }
-    }
-    elsif ($map{$cmd})
-        { layer_s($cmd, $string); }
-    else
-        { print "unknown command $cmd\n"; }
-} #############################################
+# COUNT ############################################
+    elsif ($comm eq 'count')
+		{ my $cnt = @keyset; print "CURRENT: $cnt\n"; }
+# VALUE #############################################
+    elsif ($comm eq 'value') {
+		my %descript = %{$master{$string}};
+		foreach my $key (@keyset)
+			{ print "$descript{$key}\n"; }
+	}
+# GREP ##############################################
+	elsif ($master{$comm})
+		{ layer_s($comm, $string); }
+# POPULATE ##########################################
+	elsif ($comm eq 'pop') {
+		my $target_size = $string;
+		my %pop = %{$master{"size"}};
+		my $pfh = crfile($target_size);
+		my $ofh = crfile("leftover_$target_size");
+		my $cur_size = 0; my @leftokeys = @keyset;
+		foreach my $key (@keyset) {
+			my $iter_amt = $pop{$key};
+			$cur_size += $iter_amt;
+			if ($cur_size < $target_size) {
+				my $index = 0; 
+				$index++ until $keyset[$index] eq $key;
+				splice(@keyset, $index, 1);
+				print "$key:$index\n"; print $pfh "$key\n";
+			}
+			else 
+				{ last; }
+		}
+		foreach my $lefto (@leftokeys) 
+			{ print $ofh "$lefto\n"; }
+		close $pfh; close $ofh;
+	}
+# DEFAULT ########################################### 
+	else
+		{ print "unknown command $comm\n"; }
+} # SUBS ############################################
 sub read_file {
     my ($filename, $cmd) = @_;
     my $path = "$data_dir/$filename";
@@ -83,21 +79,27 @@ sub read_file {
         my @key_value = split(" ", $i, 2);
         $sub_hash{$key_value[0]} = $key_value[1];
     }
-    $map{$cmd} = \%sub_hash;
+    $master{$cmd} = \%sub_hash;
 }
 sub layer_s {
     my ($cmd, $string) = @_;
-    my $sub_hash = $map{$cmd};
-    @newkeyset = grep { $sub_hash->{$_} =~ /$string/i } @newkeyset;
+    my $sub_hash = $master{$cmd};
+    @keyset = grep { $sub_hash->{$_} =~ /$string/i } @keyset;
    
-    foreach my $key (@newkeyset)
+    foreach my $key (@keyset)
         { print "$key\n"; }
 }
-sub temp_file {
-    my $file_name = @_;
-    my $f_path = "$data_dir/$file_name";
-    open(my $i_fh, '>', $f_path) or die "Couldn't open $filename\n";
-    print $i_fh ""; close $i_fh;
-    open(my $i_fh, '>>', $f_path) or die "couldn't open oustand";
-    return $i_fh;
+sub crfile {
+	my ($fname) = @_;
+	my $sub_path = "$data_dir$fname";
+	if (-e $sub_path)
+		{ print "$sub_path already exists"; exit; }
+	open(my $sfh, '>>', $sub_path) or die "cant open $sub_path";
+	print "listing save to $sub_path\n";
+	return $sfh;
+}
+sub prmpt {
+    print "usage:  type \$string  || reset  ||  print \$filename\n";
+	print "        count  ||  value \$type ||  pop \$amt\n";
+    print "MKRX SYSTEMS RDY: ";
 }
