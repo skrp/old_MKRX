@@ -17,24 +17,24 @@ my @keyset = @masterkeyset;
 # PROMPT #############################################
 while (1) {
 	prmpt();
-    my $input = <STDIN>; chomp $input;
-    print "\nwork'n on $input\n";
-    my ($comm, $string) = split(' ', $input, 2);
+	my $input = <STDIN>; chomp $input;
+	print "\nwork'n on $input\n";
+	my ($comm, $string) = split(' ', $input, 2);
 # RESET ##############################################
-    if ($comm eq 'reset')
-        { @keyset = @masterkeyset; }
+	if ($comm eq 'reset')
+		{ @keyset = @masterkeyset; }
 # PRINT ##############################################
-    elsif ($comm eq 'print') {
+	elsif ($comm eq 'print') {
 		my $pfh = crfile($string);
-        foreach my $key (@keyset)
-            { print $pfh "$key\n"; }
-        close $pfh;
-    }
+		foreach my $key (@keyset)
+			{ print $pfh "$key\n"; }
+		close $pfh;
+	}
 # COUNT ############################################
-    elsif ($comm eq 'count')
+	elsif ($comm eq 'count')
 		{ my $cnt = @keyset; print "CURRENT: $cnt\n"; }
 # VALUE #############################################
-    elsif ($comm eq 'value') {
+	elsif ($comm eq 'value') {
 		my %descript = %{$master{$string}};
 		foreach my $key (@keyset)
 			{ print "$descript{$key}\n"; }
@@ -58,8 +58,7 @@ while (1) {
 				splice(@keyset, $index, 1);
 				print "$key:$index\n"; print $pfh "$key\n";
 			}
-			else 
-				{ last; }
+			else { last; }
 		}
 		foreach my $lefto (@leftokeys) 
 			{ print $ofh "$lefto\n"; }
@@ -70,24 +69,23 @@ while (1) {
 		{ print "unknown command $comm\n"; }
 } # SUBS ############################################
 sub read_file {
-    my ($filename, $cmd) = @_;
-    my $path = "$data_dir/$filename";
-    open(my $fh, '<', $path) or die "Couldn't open $filename\n";
-    my @lines = readline $fh; chomp @lines; close $fh;
-    my %sub_hash;
-    foreach my $i (@lines) {
-        my @key_value = split(" ", $i, 2);
-        $sub_hash{$key_value[0]} = $key_value[1];
-    }
-    $master{$cmd} = \%sub_hash;
+	my ($filename, $cmd) = @_;
+	my $path = "$data_dir/$filename";
+	open(my $fh, '<', $path) or die "Couldn't open $filename\n";
+	my @lines = readline $fh; chomp @lines; close $fh;
+	my %sub_hash;
+	foreach my $i (@lines) {
+		my @key_value = split(" ", $i, 2);
+		$sub_hash{$key_value[0]} = $key_value[1];
+	}
+	$master{$cmd} = \%sub_hash;
 }
 sub layer_s {
-    my ($cmd, $string) = @_;
-    my $sub_hash = $master{$cmd};
-    @keyset = grep { $sub_hash->{$_} =~ /$string/i } @keyset;
-   
-    foreach my $key (@keyset)
-        { print "$key\n"; }
+	my ($cmd, $string) = @_;
+	my $sub_hash = $master{$cmd};
+	@keyset = grep { $sub_hash->{$_} =~ /$string/i } @keyset;
+	foreach my $key (@keyset)
+		{ print "$key\n"; }
 }
 sub crfile {
 	my ($fname) = @_;
@@ -99,7 +97,7 @@ sub crfile {
 	return $sfh;
 }
 sub prmpt {
-    print "usage:  type \$string  || reset  ||  print \$filename\n";
+	print "usage:  type \$string  || reset  ||  print \$filename\n";
 	print "        count  ||  value \$type ||  pop \$amt\n";
-    print "MKRX SYSTEMS RDY: ";
+	print "MKRX SYSTEMS RDY: ";
 }
