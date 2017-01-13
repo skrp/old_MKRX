@@ -11,7 +11,7 @@ my ($data_dir) = @ARGV;
 die "no dir $data_dir" unless -d $data_dir;
 # POPULATE HASHES ####################################
 foreach my $comm (@commands)
-    { read_file(uc substr($comm, 0, 3), $comm); }
+	{ read_file(uc substr($comm, 0, 3), $comm); }
 my @masterkeyset = keys %{$master{$commands[0]}};
 my @keyset = @masterkeyset;
 # PROMPT #############################################
@@ -65,8 +65,7 @@ while (1) {
 		close $pfh; close $ofh;
 	}
 # DEFAULT ########################################### 
-	else
-		{ print "unknown command $comm\n"; }
+	else { print "unknown command $comm\n"; }
 } # SUBS ############################################
 sub read_file {
 	my ($filename, $cmd) = @_;
