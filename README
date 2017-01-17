@@ -16,7 +16,7 @@ d_SHA.pl - recursive sha extraction
 e_POP.pl - use list to populate dump
 f_INDEX.pl - create meta masterlists
 g_HASH.pl - create hash files from meta
-h_MKRX.pl - terminal interface to meta-hashes
+h_FILT.pl - terminal interface *****************
 ################################################
 
 each file stored as its $sha
