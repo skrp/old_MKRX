@@ -9,6 +9,7 @@ my @commands = qw(name path size encode);
 die "no source directory" unless @ARGV;
 my ($data_dir) = @ARGV;
 die "no dir $data_dir" unless -d $data_dir;
+$data_dir =~ s%/\z%%;
 # POPULATE HASHES ####################################
 foreach my $comm (@commands)
 	{ read_file(uc substr($comm, 0, 3), $comm); }
@@ -88,7 +89,6 @@ sub layer_s {
 }
 sub crfile {
 	my ($fname) = @_;
-	$data_dir =~ s%/\z%%;
 	my $sub_path = "$data_dir/$fname";
 	if (-e $sub_path)
 		{ print "$sub_path already exists"; exit; }
