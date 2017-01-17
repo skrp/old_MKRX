@@ -88,7 +88,8 @@ sub layer_s {
 }
 sub crfile {
 	my ($fname) = @_;
-	my $sub_path = "$data_dir$fname";
+	$data_dir =~ s%/\z%%;
+	my $sub_path = "$data_dir/$fname";
 	if (-e $sub_path)
 		{ print "$sub_path already exists"; exit; }
 	open(my $sfh, '>>', $sub_path) or die "cant open $sub_path";
