@@ -18,14 +18,13 @@ f_INDEX.pl - create meta masterlists
 g_HASH.pl - create hash files from meta
 h_FILT.pl - terminal interface *****************
 ################################################
+Preserving more than 7.2 Million
+Unique files of significance
 
 each file stored as its $sha
 metadata is stored as 'g'$sha
 
 ZFS over BSD
-Preserving more than 5.5 Million
-Unique files
-
 SICC Implementation:
 
 Files are split into blocks
