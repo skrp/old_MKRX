@@ -103,6 +103,6 @@ sub crfile {
 }
 sub prmpt {
 	print "usage:  type \$string  || reset  ||  print \$filename\n";
-	print "        count  ||  value \$type ||  pop \$amt\n";
+	print "        load \$file || count  ||  value \$type ||  pop \$amt\n";
 	print "MKRX SYSTEMS RDY: ";
 }
