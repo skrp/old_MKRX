@@ -24,6 +24,12 @@ while (1) {
 # RESET ##############################################
 	if ($comm eq 'reset')
 		{ @keyset = @masterkeyset; }
+# LOAD ###############################################
+	if ($comm eq 'load') { 
+		my $load_keyset = $string;
+		open(my $loadfh, '<', $load_keyset); 
+		@newkeyset = readline $loadfh; chomp @newkeyset;
+	}
 # PRINT ##############################################
 	elsif ($comm eq 'print') {
 		my $pfh = crfile($string);
