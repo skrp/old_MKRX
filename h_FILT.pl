@@ -57,7 +57,7 @@ while (1) {
 				my $index = 0; 
 				$index++ until $keyset[$index] eq $key;
 				splice(@keyset, $index, 1);
-				print "$key:$index\n"; print $pfh "$key\n";
+				print $pfh "$key\n";
 			}
 			else { last; }
 		}
