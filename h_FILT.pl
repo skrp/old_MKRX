@@ -25,7 +25,7 @@ while (1) {
 	if ($comm eq 'reset')
 		{ @keyset = @masterkeyset; }
 # LOAD ###############################################
-	if ($comm eq 'load') { 
+	elsif ($comm eq 'load') { 
 		my $load_keyset = $string;
 		open(my $loadfh, '<', $load_keyset); 
 		@newkeyset = readline $loadfh; chomp @newkeyset;
