@@ -57,12 +57,11 @@ while (1) {
 				my $index = 0; 
 				$index++ until $keyset[$index] eq $key;
 				splice(@keyset, $index, 1);
-				print $pfh "$key\n";
+				print $pfh "$key:$iter_amt:$cur_size\n";
 			}
-			else { last; }
+			else 
+				{ print $ofh "$key:$iter_amt:$cur_size\n"; }
 		}
-		foreach my $lefto (@leftokeys) 
-			{ print $ofh "$lefto\n"; }
 		close $pfh; close $ofh;
 	}
 # DEFAULT ########################################### 
