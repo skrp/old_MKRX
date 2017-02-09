@@ -17,12 +17,13 @@ e_POP.pl - use list to populate dump
 f_INDEX.pl - create meta masterlists
 g_HASH.pl - create hash files from meta
 h_FILT.pl - terminal interface *****************
-################################################
-Preserving more than 7.2 Million
+###################
+# SUMMARY
+Preserving more than 8+ Million
 Unique files of significance
 
-each file stored as its $sha
-metadata is stored as 'g'$sha
+Each file stored as its $sha
+Metadata is stored as 'g'$sha
 
 ZFS over BSD
 SICC Implementation:
@@ -37,7 +38,23 @@ This isolation of metadata from data
 Allows for public gibberish
 To be private information
 Via SICC_QUI files
+##########################
+(( Protocol-Independent ))
+offical: UDP-SCP
+access - http ftp sh
 
+initiate - kripkey request
+server - decrypts request
+
+pop @valid, $if_success;
+
+
+File Read Server 0550
+  GROUP ACCESS
+File Post Server 0330
+  GROUP ACCESS
+File G Server 0500
+  USER ACCESS
 #############
 # RAIDZ3 POOL
 Standard Blocks 
