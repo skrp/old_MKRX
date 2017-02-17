@@ -38,6 +38,16 @@ This isolation of metadata from data
 Allows for public gibberish
 To be private information
 Via SICC_QUI files
+#############
+# RAIDZ3 POOL
+Standard Blocks 
+Allow for associative-compression
+
+#################
+# EXTERNAL DRIVES
+Random Blocks
+Allow for dense obfuscation
+
 ##########################
 (( Protocol-Independent ))
 offical: UDP-SCP
@@ -55,12 +65,3 @@ File Post Server 0330
   GROUP ACCESS
 File G Server 0500
   USER ACCESS
-#############
-# RAIDZ3 POOL
-Standard Blocks 
-Allow for associative-compression
-
-#################
-# EXTERNAL DRIVES
-Random Blocks
-Allow for dense obfuscation
