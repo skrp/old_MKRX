@@ -1,55 +1,56 @@
 #!/usr/local/bin/perl
 use strict; use warnings;
-# FILT - grep metadata interface DAEMONIZE
+################################
+# FILT - metadata user interface
 #   feat. ningu irc.freenode.net
 
-# ARGS & FRIENDS #####################################
+# ARGS & FRIENDS ################
 my %master;
 my @commands = qw(name path size encode);
 die "no source directory" unless @ARGV;
 my ($data_dir) = @ARGV;
 die "no dir $data_dir" unless -d $data_dir;
 $data_dir =~ s%/\z%%;
-# POPULATE HASHES ####################################
+# POPULATE HASHES ################
 foreach my $comm (@commands)
 	{ read_file(uc substr($comm, 0, 3), $comm); }
 my @masterkeyset = keys %{$master{$commands[0]}};
 my @keyset = @masterkeyset;
-# PROMPT #############################################
+# PROMPT ##########################
 while (1) {
 	prmpt();
 	my $input = <STDIN>; chomp $input;
 	print "\nwork'n on $input\n";
 	my ($comm, $string) = split(' ', $input, 2);
-# RESET ##############################################
+# RESET ############################
 	if ($comm eq 'reset')
 		{ @keyset = @masterkeyset; }
-# LOAD ###############################################
+# LOAD #############################
 	elsif ($comm eq 'load') { 
 		my $load_keyset = $string;
 		open(my $loadfh, '<', $load_keyset); 
 		@newkeyset = readline $loadfh; chomp @newkeyset;
 	}
-# PRINT ##############################################
+# PRINT ############################
 	elsif ($comm eq 'print') {
 		my $pfh = crfile($string);
 		foreach my $key (@keyset)
 			{ print $pfh "$key\n"; }
 		close $pfh;
 	}
-# COUNT ############################################
+# COUNT ##############################
 	elsif ($comm eq 'count')
 		{ my $cnt = @keyset; print "CURRENT: $cnt\n"; }
-# VALUE #############################################
+# VALUE ##############################
 	elsif ($comm eq 'value') {
 		my %descript = %{$master{$string}};
 		foreach my $key (@keyset)
 			{ print "$descript{$key}\n"; }
 	}
-# GREP ##############################################
+# GREP ###############################
 	elsif ($master{$comm})
 		{ layer_s($comm, $string); }
-# POPULATE ##########################################
+# POPULATE ############################
 	elsif ($comm eq 'pop') {
 		my $target_size = $string;
 		my %pop = %{$master{"size"}};
@@ -70,9 +71,9 @@ while (1) {
 		}
 		close $pfh; close $ofh;
 	}
-# DEFAULT ########################################### 
+# DEFAULT ##############################
 	else { print "unknown command $comm\n"; }
-} # SUBS ############################################
+} # SUBS ###############################
 sub read_file {
 	my ($filename, $cmd) = @_;
 	my $path = "$data_dir/$filename";
