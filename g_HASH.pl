@@ -1,21 +1,22 @@
 #!/usr/local/bin/perl
-# HASH - populate hash files via metadata
-# by skrp of MKRX
 use strict; use warnings;
 use File::Find::Rule;
-
+####################################
+# HASH - populate hash via metafiles
+####################### skrp of MKRX
+# SETUP ############################
 my ($target) = @ARGV;
 my $rule = File::Find::Rule->file()->start($target);
-# CREATE HASH-FILES
+# comment out to reduce massive size in memory
 my $nnfd = 'NAM';
-my $ppfd = 'PAT';
-my $zzfd = 'SIZ';
-my $eefd = 'ENC';
 open(my $nfd, '>>', $nnfd);
+my $ppfd = 'PAT';
 open(my $pfd, '>>', $ppfd);
+my $zzfd = 'SIZ';
 open(my $zfd, '>>', $zzfd);
+my $eefd = 'ENC';
 open(my $efd, '>>', $eefd);
-# POPULATE HASH-FILES
+# POPULATE HASH ####################
 while (defined(my $file = $rule->match)) {
 	open(my $fd, '<', $file); 
 	my @f = readline $fd;
