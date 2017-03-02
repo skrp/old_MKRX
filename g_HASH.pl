@@ -16,7 +16,7 @@ my $zzfd = 'SIZ';
 open(my $zfd, '>>', $zzfd);
 my $eefd = 'ENC';
 open(my $efd, '>>', $eefd);
-# POPULATE HASH ####################
+# POPULATE HASH METAFILES ###########
 while (defined(my $file = $rule->match)) {
 	open(my $fd, '<', $file); 
 	my @f = readline $fd;
