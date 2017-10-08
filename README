@@ -49,9 +49,16 @@ Allow for associative-compression
 Random Blocks
 Allow for dense obfuscation
 
+
+
+
+
+
+
+
 ##########################
 (( Protocol-Independent ))
-offical: UDP-SCP
+offical: UDP
 access - http ftp sh
 
 initiate - kripkey request
