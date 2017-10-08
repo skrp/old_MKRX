@@ -39,10 +39,13 @@ This isolation of metadata from data
 Allows for public gibberish
 To be private information
 Via SICC_QUI files
+
 #############
 # RAIDZ3 POOL
 Standard Blocks 
 Allow for associative-compression
+Across a raid at third-free-parity
+raidz3 15 wide
 
 #################
 # EXTERNAL DRIVES
