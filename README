@@ -21,7 +21,7 @@ h_FILT.pl - terminal interface *****************
 ###################
 # SUMMARY
 Preserving more than 11+ Million
-Unique files of significance
+Unique collections of data
 
 Each file stored as its $sha
 Metadata is stored as 'g'$sha
