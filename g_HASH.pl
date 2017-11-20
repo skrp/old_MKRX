@@ -6,16 +6,18 @@ use File::Find::Rule;
 ####################### skrp of MKRX
 # SETUP ############################
 my ($target) = @ARGV;
+# test for last '/' of $targe
 my $rule = File::Find::Rule->file()->start($target);
-# comment out to reduce massive size in memory
-my $nnfd = 'NAM';
+# comment out unused categories to reduce massive size in memory 
+my $nnfd = $target.'NAM';
+my $ppfd = $target.'PAT';
+my $zzfd = $target.'SIZ';
+my $eefd = $target.'ENC';
 open(my $nfd, '>>', $nnfd);
-my $ppfd = 'PAT';
 open(my $pfd, '>>', $ppfd);
-my $zzfd = 'SIZ';
 open(my $zfd, '>>', $zzfd);
-my $eefd = 'ENC';
 open(my $efd, '>>', $eefd);
+
 # POPULATE HASH METAFILES ###########
 while (defined(my $file = $rule->match)) {
 	open(my $fd, '<', $file); 
