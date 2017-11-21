@@ -1,17 +1,23 @@
 #!/usr/local/bin/perl
 use strict; use warnings;
-# INDEX - create metadata dumps
 use File::Find::Rule;
+###############################
+# INDEX - create metadata dumps 
+#
+# creates data dump without corresponding sha
+# useful only for simple tests
 
 my ($g_dir, $dump_dir) = @ARGV;
 die "ARG1 metadata dir ARG2 dump dir" if (!defined $g_dir);
 die "ARG1 metadata dir ARG2 dump dir" if (!defined $dump_dir);
 
 $dump_dir =~ s%/\z%%;
+
 my $NAME = "$dump_dir/NAM";
 my $PATH = "$dump_dir/PAT";
 my $SIZE = "$dump_dir/SIZ";
 my $ENCODE = "$dump_dir/ENC";
+
 open(my $nam, '>>', $NAME) or die ("Couldn't open NAM");
 open(my $pat, '>>', $PATH) or die ("Couldn't open PAT");
 open(my $siz, '>>', $SIZE) or die ("Couldn't open SIZ");
