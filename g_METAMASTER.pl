@@ -1,9 +1,9 @@
 #!/usr/local/bin/perl
 use strict; use warnings;
 use File::Find::Rule;
-######################################################
-# HASH - scrape metadata-files to metadata masterfiles
-########################################## skrp of MKRX
+############################################################
+# METAMASTER - scrape metadata-files to metadata masterfiles
+############################################### skrp of MKRX
 # this process is io intensive
 # format of each metadata masterfile => "file-sha metadata-value\n"
 # EXAMPLE: "922440e6b538bc9e7dd72b58084d2712cd770f61f370261f5bf6528b5f8d3083 FreeBSD-10.3-RELEASE-amd64-memstick.img\n" >> NAM
