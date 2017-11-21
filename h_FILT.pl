@@ -77,7 +77,7 @@ while (1) {
 sub read_file {
 	my ($filename, $cmd) = @_;
 	my $path = "$data_dir/$filename";
-	open(my $fh, '<', $path) or die "Couldn't open $filename\n";
+	open(my $fh, '<', $path) or die "Couldn't open $filename at sub read_file\n";
 	my @lines = readline $fh; chomp @lines; close $fh;
 	my %sub_hash;
 	foreach my $i (@lines) {
