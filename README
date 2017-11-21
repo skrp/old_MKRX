@@ -14,8 +14,7 @@ b_CHKMETA.pl - confirms uniq file has metadata
 c_UNIQ.pl - checks sha against archive
 d_SHA.pl - recursive sha extraction
 e_POP.pl - use list to populate dump
-f_INDEX.pl - create meta masterlists
-g_HASH.pl - create hash files from meta
+g_METAMASTER - scrape metadata-files to metadata masterfiles
 h_FILT.pl - terminal interface *****************
 
 ###################
