@@ -4,8 +4,8 @@ use strict; use warnings;
 use File::Find::Rule;
 
 my ($g_dir, $dump_dir) = @ARGV;
-if (not defined $g_dir) {die "USAGE: ARGV1 g dir ARGV2 dump dir";}
-if (not defined $dump_dir) {die "USAGE: ARGV1 g dir ARGV2 dump dir";}
+die "ARG1 metadata dir ARG2 dump dir" if (!defined $g_dir);
+die "ARG1 metadata dir ARG2 dump dir" if (!defined $dump_dir);
 
 $dump_dir =~ s%/\z%%;
 my $NAME = "$dump_dir/NAM";
