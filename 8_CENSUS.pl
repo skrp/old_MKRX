@@ -6,6 +6,8 @@ use File::Find::Rule;
 # CENSUS - locations of files
 
 # List all mkrx storage nodes
+# ex: bkup11_LIST
+
 # Each node with a newline delimited file list
 # FORMAT:
 #        $sha $host $host $host ...
@@ -15,7 +17,7 @@ die "ARG1 host_path" if (!defined $host_path);
 
 my %LIST;
 
-while (defined File::Find::Rule->file()->ine($host_path)
+while (defined File::Find::Rule->file()->in($host_path)
 {
   my $host = $_;
   $host =~ s?.*\/??;
