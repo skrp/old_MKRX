@@ -30,4 +30,4 @@ while (defined File::Find::Rule->file()->in($host_path))
   $LIST{$_} .= " $host" for (@i);
 } 
 
-print "$_ $LIST{$_}\n" for (keys %LIST);
+print "$_$LIST{$_}\n" for (keys %LIST);
