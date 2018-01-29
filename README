@@ -19,6 +19,11 @@ h_FILT.pl - terminal interface *****************
 i_CENSUS.pl - list locations of files
 j_LONE.pl - find unduped files
 
+
+
+
+
+
 ###################
 # SUMMARY
 Preserving more than 11+ Million
@@ -52,28 +57,3 @@ raidz3 15 wide
 # EXTERNAL DRIVES
 Random Blocks
 Allow for dense obfuscation
-
-
-
-
-
-
-
-
-##########################
-(( Protocol-Independent ))
-offical: UDP
-access - http ftp sh
-
-initiate - kripkey request
-server - decrypts request
-
-pop @valid, $if_success;
-
-
-File Read Server 0550
-  GROUP ACCESS
-File Post Server 0330
-  GROUP ACCESS
-File G Server 0500
-  USER ACCESS
