@@ -17,7 +17,7 @@ die "ARG1 host_path" if (!defined $host_path);
 
 my %LIST;
 
-while (defined File::Find::Rule->file()->in($host_path)
+while (defined File::Find::Rule->file()->in($host_path))
 {
   my $host = $_;
   $host =~ s?.*\/??;
