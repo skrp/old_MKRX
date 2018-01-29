@@ -5,7 +5,10 @@ use File::Find::Rule;
 #####################################################
 # CENSUS - locations of files
 
-# $sha $host $host $host ...
+# List all mkrx storage nodes
+# Each node with a newline delimited file list
+# FORMAT:
+#        $sha $host $host $host ...
 
 my ($host_path) = @ARGV;
 die "ARG1 host_path" if (!defined $host_path);
