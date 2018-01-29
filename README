@@ -16,6 +16,8 @@ d_SHA.pl - recursive sha extraction
 e_POP.pl - use list to populate dump
 g_METAMASTER - scrape metadata-files to metadata masterfiles
 h_FILT.pl - terminal interface *****************
+i_CENSUS.pl - list locations of files
+j_LONE.pl - find unduped files
 
 ###################
 # SUMMARY
