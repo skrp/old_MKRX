@@ -11,6 +11,8 @@ my $gfh;
 my @color = qw(blue yellow cyan magenta);
 my @g;
 
+my $rset = 0;
+
 `cp $g_list /tmp/G_LIST`;
 
 open($gfh, '<', '/tmp/G_LIST');
@@ -46,4 +48,13 @@ while ($i = shift @g)
   print color 'white';
   print "0\n0\n0\n0\n";
   print color 'reset';
+  
+  if ($rset % 100000 == 0)
+  {
+    open(my $gfh, '>', '/tmp/G_LIST');
+    print $gfh "$_\n" for @g;
+    close $gfh;
+  }
+  
+  $rset++;
 }
