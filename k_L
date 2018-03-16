@@ -1,5 +1,8 @@
 #!/usr/local/bin/perl
 use strict; use warnings;
+##################################
+# L - count files in pool
+# (many hours with 1337 pool)
 
 my $cnt=0;
 my ($dir) = @ARGV;
