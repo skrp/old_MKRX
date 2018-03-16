@@ -1,2 +1,12 @@
 #!/usr/local/bin/perl
 use strict; use warnings;
+
+my $cnt=0;
+my ($dir) = @ARGV;
+
+die "ARG1 DIR" if (!defined $dir);
+
+open(my $dh, $dir) or die "FAIL $dir\n";
+
+$cnt++ while (readdir $dh);
+print "$cnt\n";
