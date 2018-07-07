@@ -1,0 +1,8 @@
+#!/usr/local/bin/perl
+use strict; use warnings;
+###############################
+# BEEP - drive blinker
+my ($drive) = @ARGV;
+
+system("dd if=/dev/$drive of=/dev/null");
+print "fktheworld\n";
