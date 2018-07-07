@@ -1,7 +1,5 @@
 #!/usr/local/bin/perl
 use strict; use warnings;
-use File::Find::Rule;
-
 #####################################################
 # CENSUS - locations of files
 
@@ -17,7 +15,6 @@ die "ARG1 host_path" if (!defined $host_path);
 
 my %LIST;
 my @list = glob("$host_path/*_LIST");
-my $date = time;
 
 shift @list; shift @list; # rm . ..
 
@@ -31,7 +28,9 @@ for (@list)
   my @i = readline $ifh;
   close $ifh; chomp @i;
   
-  $LIST{$_} .= " $host_$date" for (@i);
+  my $date = shift @i;
+  
+  $LIST{$_} .= "_$host_$date" for (@i);
 } 
 
 print "$_$LIST{$_}\n" for (keys %LIST);
