@@ -1,27 +1,19 @@
 use strict; use warnings;
-use File::Find::Rule;
-
 #########################################
 # LONE - discover unduplicated files
 
-my ($host_path) = @ARGV;
+my ($file, $pool) = @ARGV;
+die "ARG1 file  ARG2 pool" if (!defined $pool);
 
-while (defined File::Find::Rule->file()->in($host_path))
+open(my $fh, '<', $file);
+my @lines = readline $fh;
+close $fh; chomp @lines;
+
+for (@lines)
 {
-  open(my $ifh, '<', $_);
-  my @i = readline $ifh; 
-  close $ifh; chomp @i;
-  for (@i)
-  { 
-# CLONE COUNT ###########################
-    my $c = $LIST{$_};
-    $c++;
-    $LIST{$_} = $c;
-  }
-}
-# STDOUT ################################
-for (keys %LIST)
-{
-  my $c = $LIST{$_};
-  print "$_\n" if ($i == 1);
+  my @array = split(" ", $_};
+  my $cnt =  0;
+  
+  $cnt++ for (@array);
+  print "$array[0]\n" if (($cnt == 2) && ($array[1] eq $pool));
 }
