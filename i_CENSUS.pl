@@ -30,7 +30,7 @@ for (@list)
   
   my $date = shift @i;
   
-  $LIST{$_} .= "_$host_$date" for (@i);
+  $LIST{$_} .= " $host_$date" for (@i);
 } 
 
 print "$_$LIST{$_}\n" for (keys %LIST);
