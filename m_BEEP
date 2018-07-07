@@ -7,7 +7,8 @@ my ($drive) = @ARGV;
 while (1)
 {
   system("dd if=/dev/$drive of=/dev/null");
-  sleep 3;
+  sleep 2;
   system("dd if=/dev/$drive of=/dev/null");
+  sleep 1;
   print "fktheworld\n";
 }
