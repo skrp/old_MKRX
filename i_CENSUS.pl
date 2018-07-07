@@ -16,8 +16,12 @@ my ($host_path) = @ARGV;
 die "ARG1 host_path" if (!defined $host_path);
 
 my %LIST;
+my @list = glob("$host_path/*_LIST");
+my $date = time;
 
-while (defined File::Find::Rule->file()->in($host_path))
+shift @list; shift @list; # rm . ..
+
+for (@list)
 {
   my $host = $_;
   $host =~ s?.*\/??;
@@ -27,7 +31,7 @@ while (defined File::Find::Rule->file()->in($host_path))
   my @i = readline $ifh;
   close $ifh; chomp @i;
   
-  $LIST{$_} .= " $host" for (@i);
+  $LIST{$_} .= " $host_$date" for (@i);
 } 
 
 print "$_$LIST{$_}\n" for (keys %LIST);
