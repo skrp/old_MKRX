@@ -4,5 +4,10 @@ use strict; use warnings;
 # BEEP - drive blinker
 my ($drive) = @ARGV;
 
-system("dd if=/dev/$drive of=/dev/null");
-print "fktheworld\n";
+while (1)
+{
+  system("dd if=/dev/$drive of=/dev/null");
+  sleep 3;
+  system("dd if=/dev/$drive of=/dev/null");
+  print "fktheworld\n";
+}
