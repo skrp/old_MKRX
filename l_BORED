@@ -2,59 +2,46 @@
 use strict; use warnings;
 #########################################
 # BORED - idle massive output
-
-my ($g_list, $g_dir) = @ARGV;
-die "ARG1 g_list ARG2 g_dir" if (!defined $g_dir);
-
+#########################################
 my $gfh;
-
 my @color = qw(blue yellow cyan magenta);
 my @g;
-
 my $rset = 0;
+my $hn = system("hostname");
+#########################################
 
-`cp $g_list /tmp/G_LIST`;
-
-open($gfh, '<', '/tmp/G_LIST');
+if (-e '/tmp/BORED') 
+ { open(my $gfh, '<', '/tmp/BORED'); }
+else 
+ { open(my $gfh, '<', "/net/$hn"); }
 @g = readline $gfh;
 close $gfh; chomp @g;
-
+#########################################
 print "TTL: @g\n";
-
 while ($i = shift @g)
 {
   sleep 1;
-  
-  my $color = $color[rand @color];
-  my $idir = $g_dir.'/'.$i;
-  
-  open(my $ifh, '<', $idir);
-  my @i = readline $ifh;
-  close $ifh; chomp @i;
-  
+#########################################  
+  my $color = $color[rand @color]; 
+#########################################  
   print color 'red';
-  print "FAIL $i\n" if (!defined @i);
-  print color 'reset';
-  
-  print color 'green';
-  print "$i[0]\n";
-  print color 'reset';
-  
+  my @i = split(" ", $i);
+  print "$i[0]";
+#########################################  
   print color $color;
-  print "$i[1]\n";
-  print "$i[2]\n";
-  print "$i[3]\n";
-
+  print " $_" for (@i);
+  print "\n";
+#########################################
   print color 'white';
   print "0\n0\n0\n0\n";
   print color 'reset';
-  
+#########################################  
   if ($rset % 100000 == 0)
   {
-    open(my $gfh, '>', '/tmp/G_LIST');
-    print $gfh "$_\n" for @g;
-    close $gfh;
+    open(my $tfh, '>', '/tmp/BORED');
+    print $tfh "$_\n" for @g;
+    close $tfh;
   }
-  
+#########################################  
   $rset++;
 }
