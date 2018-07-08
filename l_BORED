@@ -9,11 +9,11 @@ my @g;
 my $rset = 0;
 my $hn = system("hostname");
 #########################################
-
 if (-e '/tmp/BORED') 
  { open(my $gfh, '<', '/tmp/BORED'); }
 else 
  { open(my $gfh, '<', "/net/$hn"); }
+#########################################
 @g = readline $gfh;
 close $gfh; chomp @g;
 #########################################
