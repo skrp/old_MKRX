@@ -2,14 +2,13 @@
 use strict; use warnings;
 ##################################
 # L - count files in pool
-# (many hours with 1337 pool)
-
+##################################
 my $cnt=0;
 my ($dir) = @ARGV;
 die "ARG1 DIR" if (!defined $dir);
-
+##################################
 open(my $dh, $dir) or die "FAIL $dir\n";
-
+##################################
 $cnt++ while (readdir $dh);
-
 print "$cnt\n";
+##################################
