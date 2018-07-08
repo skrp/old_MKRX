@@ -1,13 +1,12 @@
 use strict; use warnings;
-#########################################
+##############################################
 # LONE - discover unduplicated files
+my @lines;
+my $hn = system("hostname");
 
-my ($file, $pool) = @ARGV;
-die "ARG1 file  ARG2 pool" if (!defined $pool);
-
-open(my $fh, '<', $file);
-my @lines = readline $fh;
-close $fh; chomp @lines;
+open(my $cfh, '<', "/net/$hn");
+@lines = readline $cfh;
+close $cfh; chomp @lines;
 
 for (@lines)
 {
@@ -15,5 +14,6 @@ for (@lines)
   my $cnt =  0;
   
   $cnt++ for (@array);
-  print "$array[0]\n" if (($cnt == 2) && ($array[1] eq $pool));
+#  print "$array[0]\n" if (($cnt == 2) && ($array[1] eq $pool));
+  print "$array[0] $array[1]\n" if ($cnt == 2);
 }
