@@ -1,12 +1,9 @@
 #!/usr/local/bin/perl
-# $5 SCRUB CRONJOB
-# skrp Prince of Archives
 use strict; use warnings;
 use Digest::SHA ();
-use File::Find::Rule;
-###############################
-# USAGE
-my ($dir, $log)=@ARGV;
+#######################################
+# SCRUB - output sha-stamped-lists
+my ($pool)=@ARGV;
 open(my $lfh, '>>', $log) or die("Can't open $log\n");
 ###############################
 # BEGIN
