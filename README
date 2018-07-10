@@ -21,34 +21,13 @@ j_LONE.pl - find unduped files
 
 ###################
 # SUMMARY
-Preserving more than 11+ Million
-Unique collections of data
-
-Each file stored as its $sha
+Each file named as its sha
 Metadata is stored as 'g'$sha
 
-ZFS over BSD
-SICC Implementation:
+ZFS over BSD SICC Implementation:
 
 Files are split into blocks
 Named after the sha256sum
 
-All files in one directory
-All metadata in another directory
-
-This isolation of metadata from data
-Allows for public gibberish
-To be private information
-Via SICC_QUI files
-
-#############
-# RAIDZ3 POOL
-Standard Blocks 
-Allow for associative-compression
-Across a raid at third-free-parity
-raidz3 15 wide
-
-#################
-# EXTERNAL DRIVES
-Random Blocks
-Allow for dense obfuscation
+Data & metadata isolated
+Data able to be pulic yet private
