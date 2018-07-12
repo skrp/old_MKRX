@@ -18,7 +18,12 @@ g_METAMASTER - scrape metadata-files to metadata masterfiles
 h_FILT.pl - terminal interface *****************
 i_CENSUS.pl - list locations of files
 j_LONE.pl - find unduped files
-
+k_CNT.pl - count pool
+l_BORED.pl - hang-out-data
+m_BEEP.pl - ping drive
+n_CP.pl - copy list of files
+o_MV.pl - move list of files
+old_INDEX.pl - mmm dont know
 ###################
 # SUMMARY
 Each file named as its sha
