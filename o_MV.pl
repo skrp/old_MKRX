@@ -1,7 +1,7 @@
 #!/usr/local/bin/perl
 use strict; use warnings;
 ###########################
-# CP - copy a list of files
+# MV - move a list of files
 use File::Copy;
 ###########################
 my ($list, $target, $dump) = @ARGV;
