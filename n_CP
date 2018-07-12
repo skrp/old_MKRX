@@ -14,7 +14,6 @@ my $cnt = 0;
 
 for my $line (@list)
 {
-  $cnt++;
   if (-e $f)
-    { copy($f, $dump) or print "$f FAIL cnt: $cnt\n"; }
+    { copy($f, $dump) or printf("FAIL %s cnt: %d\n", $f, $cnt++); }
 }
