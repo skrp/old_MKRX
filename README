@@ -31,3 +31,8 @@ Named after the sha256sum
 
 Data & metadata isolated
 Data able to be pulic yet private
+###################
+{usb} = code = {user} 
+  key            auth
+code => data
+###################
