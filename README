@@ -7,7 +7,7 @@
 [1 - 4] : SICC PROCESS
 ----------------------
 1_XS.pl - extract & standardize
-2_BLKR - block a file apart
+2_BLKR.pl - block a file apart
 3_MS.c - multiple-slicr
 3_SLICR.c - random file slicer
 3_slicr.c - random file slicer
