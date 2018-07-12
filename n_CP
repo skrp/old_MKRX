@@ -2,4 +2,6 @@
 use strict; use warnings;
 ###########################
 # CP - copy a list of files
-
+use File::Copy;
+my ($list, $target, $dump) = @ARGV;
+die "ARG1 list ARG2 target ARG3 dump" if (!defined $dump);
