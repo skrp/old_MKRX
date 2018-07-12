@@ -6,7 +6,13 @@
 
 [1 - 4] : SICC PROCESS
 ----------------------
-  https://github.com/skrp/SICC
+1_XS.pl - extract & standardize
+2_BLKR - block a file apart
+3_MS.c - multiple-slicr
+3_SLICR.c - random file slicer
+3_slicr.c - random file slicer
+4_BUILD.c - build data to file
+
 [a - h] : MKRX TOOLSET
 ----------------------
 a_SCRUB.pl - verifies the file to its sha
