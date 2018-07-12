@@ -1,0 +1,5 @@
+#!/usr/local/bin/perl
+use strict; use warnings;
+###########################
+# CP - copy a list of files
+
