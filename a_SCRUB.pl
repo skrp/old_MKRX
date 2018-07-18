@@ -19,6 +19,7 @@ closedir $dh; chomp @list;
 for (@list)
 {
 	my $file = $_;
+	$file =~ $pool.'/'.$file;
 	my $sha=file_digest($file) or die "couldn't sha $file";
 #######################################
 	$file =~ s/.*\///;
