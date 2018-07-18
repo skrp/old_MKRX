@@ -1,20 +1,18 @@
-###################
-# Anarchist Archive
-
-# https://ibin.co/38jDMZqbLlBS.jpg
-# https://drive.google.com/open?id=0B9G8ShajIbYfRGNHakVkdXg5MTA
-
+##############################################
+# MKRX - Meri Kann cibR punX Anarchist Archive
+##############################################
+https://ibin.co/38jDMZqbLlBS.jpg
+https://drive.google.com/open?id=0B9G8ShajIbYfRGNHakVkdXg5MTA
+##############################################
 [1 - 4] : SICC PROCESS
-----------------------
 1_XS.pl - extract & standardize
 2_BLKR.pl - block a file apart
 3_MS.c - multiple-slicr
 3_SLICR.c - random file slicer
 3_slicr.c - random file slicer
 4_BUILD.c - build data to file
-
-[a - h] : MKRX TOOLSET
-----------------------
+##############################################
+[a - o] : MKRX TOOLSET
 a_SCRUB.pl - verifies the file to its sha
 b_CHKMETA.pl - confirms uniq file has metadata
 c_UNIQ.pl - checks sha against archive
@@ -29,8 +27,7 @@ l_BORED.pl - hang-out-data
 m_BEEP.pl - ping drive
 n_CP.pl - copy list of files
 o_MV.pl - move list of files
-old_INDEX.pl - mmm dont know
-###################
+##############################################
 # SUMMARY
 Each file named as its sha
 Metadata is stored as 'g'$sha
@@ -42,8 +39,8 @@ Named after the sha256sum
 
 Data & metadata isolated
 Data able to be pulic yet private
-###################
+##############################################
 {usb} = code = {user} 
   key            auth
 code => data => {file}
-###################
+##############################################
