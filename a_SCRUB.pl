@@ -4,11 +4,11 @@ use Digest::SHA;
 #######################################
 # SCRUB - output sha-stamped-lists
 #######################################
-my ($pool)=@ARGV;
-die "ARG1 pool-name" if (!defined $pool);
+my ($node, $pool, $log)=@ARGV;
+die "ARG1 node ARG2 location ARG3 log" if (!defined $log);
+$pool =~ %/\z%%;
 my $date = time;
-my $stamp = $pool.'_'.$date;
-my $new = '/net/'.$pool.'_LIST';
+my $stamp = $node.'_'.$date;
 #######################################
 open(my $nfh, '>', $new);
 opendir(my $dh, $dir) or die "FAIL opendir $dir";
