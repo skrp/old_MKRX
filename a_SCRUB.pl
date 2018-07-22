@@ -22,12 +22,12 @@ for (@list)
 {
 	my $file = $_;
 	$file =~ $pool.'/'.$file;
-	my $sha=file_digest($file) or die "couldn't sha $file";
+	my $sha=file_digest($file) or die "FAIL sha $file";
 #######################################
 	$file =~ s/.*\///;
 #######################################
       	if ($sha ne $file) 
-		{ print $efh "FAIL $file\n"; next; }
+		{ print $efh "FAIL sha $node $file\n"; next; }
 #######################################	
 	print $nfh "$file $stamp\n";
 }
