@@ -9,7 +9,9 @@ die "ARG1 node ARG2 location ARG3 log" if (!defined $log);
 $pool =~ %/\z%%;
 my $date = time;
 my $stamp = $node.'_'.$date;
+my $error = $log.'_ERROR';
 #######################################
+open(my $efh, '>>', $error);
 open(my $nfh, '>', $new);
 opendir(my $dh, $dir) or die "FAIL opendir $dir";
 #######################################
@@ -25,7 +27,7 @@ for (@list)
 	$file =~ s/.*\///;
 #######################################
       	if ($sha ne $file) 
-		{ print "FAIL $file\n"; next; }
+		{ print $efh "FAIL $file\n"; next; }
 #######################################	
 	print $nfh "$file $stamp\n";
 }
