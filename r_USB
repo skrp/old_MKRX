@@ -2,7 +2,8 @@
 # USB - portable drive standard
 
 USB is used for:
-  META
-  CENSUS
-  OTOPSK
-  unix kernel creation
+  META - append
+  CENSUS - append
+  OTOPSK - remove only
+  unix kernel creation - ro
+  log - transient (msgs, stats, sec)
