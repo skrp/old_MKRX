@@ -1,9 +1,9 @@
 #################################
 # USB - portable drive standard
-
-USB is used for:
-  META - append
-  CENSUS - append
-  OTOPSK - remove only
-  unix kernel creation - ro
-  log - transient (msgs, stats, sec)
+  META 
+  CENSUS
+  OTOPSK
+    nodes
+      ANONI $KEY [named after user] 
+  KERN
+  LOG
