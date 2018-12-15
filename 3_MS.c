@@ -95,8 +95,6 @@ int slicr(char *target_file, char *dump_path, char *key_path)
     FILE *bbfp;
     unsigned long long int size, read_size;
     char *buf, *b_sha, *ff_block;
-    //char *idx;
-    //idx = malloc(3);
     char idx[3];
 
     size = arc4random_uniform((size_t) SIZE); if (size == 0) { continue; }
@@ -126,7 +124,6 @@ int slicr(char *target_file, char *dump_path, char *key_path)
       printf("\n%llu\n%llu\n", position, size);
 ///////////////////////////////////////
 // cleanup
-    //free(idx);
     free(buf); free(b_sha); free(ff_block);
     fclose(bbfp);
   }
