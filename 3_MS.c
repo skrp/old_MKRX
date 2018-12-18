@@ -109,8 +109,11 @@ int slicr(char *target_file, char *dump_path, char *key_path)
     b_sha = SHA256_FileChunk(target_file, NULL, (off_t) position, (off_t) size);
 
     ff_block = malloc(strlen(dump_path) + 300); strcpy(ff_block, dump_path); 
+    // nested dump ##########################
     idx[0] = b_sha[0]; idx[1]= b_sha[1];
     strcat(ff_block, idx);
+    /////////////##########################
+
     strcat(ff_block, "/");
     strcat(ff_block, b_sha);
 
