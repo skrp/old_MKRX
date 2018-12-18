@@ -112,9 +112,8 @@ int slicr(char *target_file, char *dump_path, char *key_path)
     // nested dump ##########################
     idx[0] = b_sha[0]; idx[1]= b_sha[1];
     strcat(ff_block, idx);
-    /////////////##########################
-
     strcat(ff_block, "/");
+    /////////////##########################
     strcat(ff_block, b_sha);
 
     if ((bbfp = fopen(ff_block, "wb")) < 0) { printf("FAIL ff_block open pos: %llu\n", position); exit(1); }
